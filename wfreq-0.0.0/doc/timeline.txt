@@ -1,0 +1,13 @@
+23-12-2021
+* Design
+* Create WordDictionary class
+
+25-12-2021
+* Add words to the WordDictionary class
+
+27-12-2021
+* Design WordAnalyzer class
+
+28-12-2021
+
+01-01-2022

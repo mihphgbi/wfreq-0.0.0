@@ -1,0 +1,162 @@
+SPECIFICATIONS OF THE WORD FREQUENCY PROGRAM
+
+This is specifications of the word frequency program. Refer to README at
+doc/ directory to use the program.
+
+CONTENT
+I. INTRODUCTION...........................................................
+II. DETAILS...............................................................
+III. LIMITATIONS..........................................................
+IV. DESIGN................................................................
+1. Interface..............................................................
+2. Object.................................................................
+V. TODOS..................................................................
+VI. REFERENCES............................................................
+
+I. INTRODUCTION
+* The program name is *wfreq* (stands for word frequency program)
+* The general specifications of the program is:
+Analyze a text file, print frequency of each words in the text. Seperators
+include white space and characters which seperates the sentences
+('.', ',', ';', '?', '!', '...', etc.). A word is an english word, and
+also consider the plural, past, present of the word
+(e.g. _mouse_ and _mice_ are the same word, _study_,_studies_,_studied_
+and _studying_ are the same word).
+
+II. DETAILS
+* The program is portable.
+* The program gets a text file as its input.
+* The program analyzes frequency of words in the text, then print the report
+in screen.
+* The program determines the frequency of a word in statistics context. Thus,
+the frequency determines how often a word appears in a text. 
+* The output of the program is the frequency distribution table, including its
+caption (text format).
+* The default dictionary is the Webster's Unabridged Dictionary.
+* The program interface is command line interface (CLI).
+* In general, a word is a string of characters, and has meaning if it's
+considered in a language.
+* The default dictionary contains words which have their own meanings.
+* The list of words consists of words in a dictionary.
+* The infinitive word and its variances are the same.
+* The program will identify english words, some english names, and regional
+words (for example, Brazilian, American, Alice, etc.)
+
+III. LIMITATION
+* The interface of the program is designed for users who are familiar with
+command line interface.
+* The program prints the report in screen, which can be redirected to a text
+file. To print the report in different formats, use external program.
+(We will not implement the function to output the report in different formats
+to simplify the interface)
+* The program doesn't use other dictionary, since the general specification
+doesn't include the requirement. Furthermore, the dictionary is a list of words.
+* The program don't used complete dictionary.
+* The program can only see english word, which means that the program can't
+recognize some english name.
+* The program will behave strangely when given a binary file
+(undefined behaviour).
+* The program can't recognize part of speech of words.
+
+IV. DESIGNS
+1) Interface:
+The general interface of the program:
+
+$ wfreq [options] [file]
+
+* The options include (at least) the usage and version of the program
+* The program print the report of frequencies and total one by default.
+* The program can output total frequencies, cumulative one, relative one,
+and percentage one, which means that the command line can accept addition
+five options (including the default one).
+* The input file is the text file.
+
+Consequently, the final interface is:
+
+$ wfreq [options] [text]
+Print frequency of words in a text
+
+options
+-h      print usage and exit.
+-v      print version and exit.
+-f      output frequency (default option).
+
+text    pathname of the input text.
+
+The program get the text from standard input if no text file is given.
+When only text pathname is given, print the frequency of words in the text.
+
+2) Objects
+* Objects must be relavant to the context of the program.
+* The objects should contains useful methods.
+* According to the specifications, we have: Word, WordDictionary, WordList,
+WordFrequencyRecord, WordRecord, WordFrequencyList, and WordAnalyzer.
+
+a) Word
+Word is a string of characters.
+
+Operations:
+* Set the content of word.
+* Get the content of word.
+* Print the content of the word.
+
+b) WordDictionary: (interface)
+Operations in WordDictionary:
+* Set and get name of the dictionary.
+* Add a word record to the dictionary.
+* Remove a word record in the dictionary.
+* Find a word in the dictionary.
+* Sort the dictionary.
+* Check if the given word is valid word.
+
+c) WordRecord:
+WordRecord contains infinitive word, and its variations.
+Its variations are in plural, past, present continuous form, etc.
+
+Operations:
+* Set and get the infinitive word, and its related words.
+* Print word record.
+* Search a word in the record.
+* Remove all field values of word record.
+
+d) WordAnalyzer:
+WordAnalyzer contains text file, word list, seperators, dictionary, and
+word frequency list.
+
+Operations:
+* Set and get delimiters.
+* Find a word in a dictionary.
+* Check if a word is a valid one.
+* Get word list from a text.
+* Get a word in a dictionary.
+* Add seperators.
+* Compute frequency of each word in a word list.
+* Sort word list.
+* Print word frequency distribution table.
+
+e) WordFrequencyRecord:
+Contains an infinitive word and its frequency.
+
+f) WordFrequencyList:
+Contains list of word frequency record.
+Operations:
+* Compute frequency of each word in a word list.
+* Set and get name of the word frequency list.
+* Get total frequency of words.
+* Print frequency distribution table.
+
+V. TODOS
+* May we process a text file with other dictionaries.
+* May we process other file type.
+* May the project be ported to other system. (not linux and windows).
+* May the program print the report in other formats? (Currently, it isn't
+neccessary, since we can pipe the result in other format by external program).
+* May the program has graphics interface? (Perhaps an application need to be
+easy for normal users to use).
+* May we use the oxford english dictionary or others?
+* Recognize part of speech of words.
+* Use a dictionary (not word list).
+* Compute other frequency tables.
+
+VI. REFERENCES:
+1) https://www.storyofmathematics.com/frequency-statistic

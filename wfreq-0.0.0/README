@@ -1,0 +1,14 @@
+## wfreq
+
+### How to build
+
+To build the source:
+
+$ javac ./lib/*.java
+$ javac ./MainApp.java
+
+### Troubleshoot
+If you get the exception java.lang.NoClassDefFoundError: gnu/getopt/Getopt 
+then you can build using classpath flag:
+
+$ javac -cp ".:/path/to/gnu-getopt.jar" ./MainApp.java

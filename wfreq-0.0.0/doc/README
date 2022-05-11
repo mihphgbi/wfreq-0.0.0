@@ -1,0 +1,89 @@
+DOCUMENTATIONS OF THE PROGRAM
+
+This documentation provides the information of the word frequency analysis
+program, and how to use it.
+
+I. INTRODUCTION
+
+II. COMMAND LINE USAGE
+1. Basic usage
+
+$ wfreq [options] [text]
+Print frequency of words in a text
+
+options
+-h      print usage and exit.
+-v      print version and exit.
+-f      output frequency (default option).
+
+text    pathname of the input text.
+
+The program get the text from stdin if no text file is given.
+When only text pathname is given, print the frequency of words in the text.
+
+2. Return value
+
+III. INSTALL THE PROGRAM
+1. Prerequisites
+* package gnu.getopt.Getopt
+
+2. To build the program, run
+    javac MainApp.java
+
+IV. DESIGN
+1) CRC model
++-------------------------------------------------+
+| WordAnalyzer                                    |
++--------------------------------+----------------+
+| Analyze the frequency of words | InputStream    |
+| in the text                    | WordDictionary |
++--------------------------------+----------------+
+
++-------------------------------------------------+
+| WordList                                        |
++--------------------------------+----------------+
+| Contains list of english words | WordRecord     |
+| in english dictionary          |                |
++--------------------------------+----------------+
+
++-------------------------------------------------+
+| WordRecord                                      |
++--------------------------------+----------------+
+| A record of a word             | Word           |
++--------------------------------+----------------+
+
++-------------------------------------------------+
+| Word                                            |
++--------------------------------+----------------+
+| A definition of a word         |                |
++--------------------------------+----------------+
+
++-------------------------------------------------+
+| WordFrequencyList                               |
++--------------------------------+----------------+
+| Contains list of word          | WordRecord     |
+| frequency record               |                |
++--------------------------------+----------------+
+
++-------------------------------------------------+
+| WordFrequencyRecord                             |
++--------------------------------+----------------+
+| A record that contains         | Word           |
+| infinitive word and its        |                |
+| frequency.                     |                |
++--------------------------------+----------------+
+
+2) UML model
+See figure file.
+
+V. ADVANCE USAGE
+Briefly,
+$ wfreq /tmp/text.txt
+$ wfreq < "/tmp/text.txt"
+$ wfreq < "/tmp/text.txt" > "~/freqtable"
+etc.
+You can also write a shell script that uses the wfreq command to do the
+required task automatically.
+
+VI. DATA AND METHODS
+See report file.
